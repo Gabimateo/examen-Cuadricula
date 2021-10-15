@@ -1,13 +1,18 @@
 <template>
 <div>
-    <b-button class="button-modal">Ingreso Galeria</b-button>
+    <Grid></Grid>
 </div>
   
 </template>
 
 <script>
+import Grid from '../components/grid.vue'
 export default {
-    name: 'GalleryImages'
+    name: 'GalleryImages',
+
+    components: {
+        Grid,
+    }
 
 }
 </script>
