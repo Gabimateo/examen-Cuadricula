@@ -1,13 +1,14 @@
 <template>
 <div>
  <div class="container-grid">
-   <div class="items" v-for="image in imagenes" :key="image.id">
-     <td class="titles">{{image.title}}</td>
+   <div class="items" v-for="imagen in imagenes" :key="imagen.id">
+     <button class="btn" v-on:click="borrar(imagen)">
+     <td class="titles">{{imagen.title}}</td>
      <img 
      class="img"
-     :src="image.url" 
+     :src="imagen.url" 
      alt="photo">
-     
+     </button>
    </div>
  </div>
 </div>
@@ -27,16 +28,24 @@ export default {
   mounted(){
     this.getTodos();
   },
+  computed: {
+
+  },
   methods: {
     getTodos(){
+      //realizamos la llamada a nuestra API para poder traer el contenido.
       axios.get('https://jsonplaceholder.typicode.com/photos')
            .then(response =>{
+             //cargamos en imagenes el resultado del data para luego poder utilizarlo.
              this.imagenes = response.data;
-             console.log(this.imagenes)
            })
            .catch(e=>
              console.log(e)
            )
+    },
+
+    borrar(){
+      
     }
   }
 }
@@ -59,6 +68,17 @@ export default {
     height: 300px;
     width: 300px
   }
+
+  .btn{
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn:hover{
+    background-color: lightgray
+
+    }
+
   .titles{
     font-size: 15px;
     height: 70px;
