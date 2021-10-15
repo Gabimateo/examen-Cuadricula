@@ -1,4 +1,7 @@
 <template>
+<div>
+    <b-button class="button-modal">Ingreso Galeria</b-button>
+</div>
   
 </template>
 
@@ -10,5 +13,7 @@ export default {
 </script>
 
 <style lang="stylus">
+
+
 
 </style>

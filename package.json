@@ -1,5 +1,9 @@
 {
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.12.1"
+  },
+  "dependencies": {
+    "buefy": "^0.9.10",
+    "style-loader": "^3.3.0"
   }
 }
