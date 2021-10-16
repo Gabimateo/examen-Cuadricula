@@ -1,13 +1,24 @@
 <template>
 <div>
  <div class="container-grid">
-   <div class="items" v-for="imagen in imagenes" :key="imagen.id">
-     <button class="btn" v-on:click="borrar(imagen)">
+  <div 
+      class="items" 
+      v-for="(imagen , index) in imagenes" :key="imagen.id"
+      
+   >
+
+     <button 
+        class="btn" 
+        @click="borrar(index)" 
+        >
+
      <td class="titles">{{imagen.title}}</td>
+
      <img 
      class="img"
      :src="imagen.url" 
-     alt="photo">
+     :alt="imagen.title">
+
      </button>
    </div>
  </div>
@@ -16,13 +27,17 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
+
 export default {
   name: 'Grid',
-
+  
+  components: {
+    
+  },
   data(){
     return {
-      imagenes:null,
+      imagenes: null,
       }
   },
   mounted(){
@@ -35,17 +50,14 @@ export default {
     getTodos(){
       //realizamos la llamada a nuestra API para poder traer el contenido.
       axios.get('https://jsonplaceholder.typicode.com/photos')
-           .then(response =>{
+           .then(res =>{
              //cargamos en imagenes el resultado del data para luego poder utilizarlo.
-             this.imagenes = response.data;
-           })
-           .catch(e=>
-             console.log(e)
-           )
-    },
+            this.imagenes = res.data;  
+        }
+           )},
 
-    borrar(){
-      
+    borrar(index){
+       this.imagenes.splice(index, 1)
     }
   }
 }
@@ -60,7 +72,7 @@ export default {
    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
    row-gap: 5.5em;
    padding: 3em;
-   background-color: darkgray
+   background-color: cadetblue
 
    }
   .items{
