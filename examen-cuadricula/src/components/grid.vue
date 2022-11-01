@@ -1,13 +1,13 @@
 <template>
   <div class="container-total">
-    <h1>Prueba Grid Responsive/reactiveJS</h1>
+    <h1 class="title-Principal">PRUEBA (Grid Responsive/reactiveJS)</h1>
     <div class="container-grid">
       <div class="items" v-for="(imagen, index) in imagenes" :key="imagen.id">
         <button class="btn" @click="borrar(index)">
           <img class="img" :src="imagen.url" :alt="imagen.title" />
         </button>
       </div>
-      
+
       <!-- aqui es donde llamamos a la dependencia
        que nos permite hacer un scroll infinito, 
        haciendo nuevas llamadas a la API a 
@@ -34,6 +34,7 @@ export default {
       limit:15
       }
   },
+  
   methods: {
     getTodos($state){
           //realizamos la llamada a nuestra API para poder traer el contenido            
@@ -64,6 +65,12 @@ export default {
 <style scoped>
 .container-total {
   height: 100%;
+}
+.title-Principal{
+  text-align:center;
+  padding: 10px;
+  font-size: 25px;
+  font-weight: bold;
 }
 .container-grid {
   display: grid;
